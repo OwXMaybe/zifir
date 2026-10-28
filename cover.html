@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>ZİFİR — Kapak</title>
+<style>
+  html,body{margin:0;padding:0;background:#111;height:100%;display:flex;align-items:center;justify-content:center;font-family:monospace}
+  /* itch kapak önerisi 630x500 */
+  #cover{width:630px;height:500px;position:relative;overflow:hidden;background:#05060c;box-shadow:0 0 40px #000}
+  canvas{position:absolute;inset:0}
+  .hint{position:fixed;bottom:8px;left:0;right:0;text-align:center;color:#556;font-size:12px}
+</style>
+</head>
+<body>
+<div id="cover"><canvas id="c" width="630" height="500"></canvas></div>
+<div class="hint">Ekran görüntüsü al (630×500) → itch kapak görseli olarak yükle</div>
+<script>
+'use strict';
+const cv=document.getElementById('c'), x=cv.getContext('2d');
+const W=630,H=500, TAU=Math.PI*2;
+function frame(t){
+  t/=1000;
+  x.fillStyle='#05060c'; x.fillRect(0,0,W,H);
+  // yıldız alanı
+  for(let i=0;i<90;i++){ x.fillStyle='rgba(140,160,220,'+(0.03+((i*7)%12)/220)+')'; x.fillRect((i*137.5)%W,(i*89.3)%(H*0.72),1,1); }
+  // tutulma diski
+  const ex=W/2, ey=175;
+  const g=x.createRadialGradient(ex,ey,40,ex,ey,170);
+  g.addColorStop(0,'rgba(150,90,230,'+(0.30+0.08*Math.sin(t*1.1))+')'); g.addColorStop(1,'rgba(150,90,230,0)');
+  x.fillStyle=g; x.beginPath(); x.arc(ex,ey,170,0,TAU); x.fill();
+  x.fillStyle='#0a0b13'; x.beginPath(); x.arc(ex,ey,64,0,TAU); x.fill();
+  x.strokeStyle='rgba(196,122,255,'+(0.55+0.25*Math.sin(t*1.2))+')'; x.lineWidth=3;
+  x.beginPath(); x.arc(ex,ey,66,0,TAU); x.stroke(); x.lineWidth=1;
+  // parlak parçacıklar (halka)
+  for(let i=0;i<6;i++){ const a=t*(0.6+i*0.2)+i*TAU/6; x.fillStyle='#c47aff'; x.fillRect(ex+Math.cos(a)*82-1.5,ey+Math.sin(a)*82-1.5,3,3); }
+  // şehir silueti
+  for(let i=0;i<44;i++){ const h=30+((i*137)%90), bx=i*16-8;
+    x.fillStyle='#0a0c13'; x.fillRect(bx,H-80-h,15,h+80);
+    if((i*13)%7===0){ x.fillStyle='rgba(255,190,110,'+(0.08+0.06*Math.sin(t*2+i))+')'; x.fillRect(bx+4,H-92-((i*29)%h),3,3); }
+    if((i*11)%9===0){ x.fillStyle='rgba(110,231,255,0.08)'; x.fillRect(bx+9,H-100-((i*17)%h),2,6); }
+  }
+  x.fillStyle='#05060b'; x.fillRect(0,H-80,W,80);
+  // kül
+  for(let i=0;i<30;i++){ const yy=((i*53.7+t*10)%H), xx=(i*197+Math.sin(t*0.7+i)*22)%W; x.fillStyle='rgba(180,190,210,'+(0.05+(i%5)/60)+')'; x.fillRect(xx,yy,1,1); }
+  // başlık
+  x.textAlign='center';
+  x.fillStyle='#5a6a8a'; x.font='11px monospace';
+  x.fillText('E P U  ·  S O N   O P E R A T Ö R   K A Y D I',W/2,88);
+  x.fillStyle='rgba(196,122,255,0.35)'; x.font='bold 78px monospace';
+  x.fillText('Z İ F İ R',W/2+3,300);
+  x.fillStyle='#e8ecf8';
+  x.fillText('Z İ F İ R',W/2,297);
+  x.fillStyle='#c47aff'; x.font='bold 20px monospace';
+  x.fillText('K E S T R E L   P R O T O K O L Ü',W/2,332);
+  // slogan
+  x.fillStyle='#8a93a8'; x.font='12px monospace';
+  x.fillText('Dal · Yağmala · Canlı çık · Ölürsen kaybet',W/2,362);
+  // alt şerit
+  x.fillStyle='#3a4152'; x.font='10px monospace';
+  x.fillText('TOP-DOWN EXTRACTION ACTION-RPG · TARAYICIDA ÇALIŞIR',W/2,H-42);
+  x.fillStyle='#c47aff'; x.globalAlpha=0.6; x.font='10px monospace';
+  x.fillText('made by ALTA OwXGM',W/2,H-24);
+  x.globalAlpha=1;
+  // tarama çizgileri
+  x.fillStyle='rgba(0,0,0,0.10)';
+  for(let y=0;y<H;y+=3)x.fillRect(0,y,W,1);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
