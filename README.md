@@ -98,4 +98,4 @@ System kullanıyor. Sahne ve arayüz koddan kuruluyor (`GameBootstrap`).
 
 ---
 
-**Geliştirici:** Eren Tyto ([@OwXMaybe](https://github.com/OwXMaybe)) · © 2026 Tüm hakları saklıdır.
+**Geliştirici:** Eren Tyto ([@OwXMaybe](https://github.com/OwXMaybe)) · [MIT Lisansı](LICENSE)
