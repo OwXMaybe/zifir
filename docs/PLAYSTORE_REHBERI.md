@@ -29,7 +29,7 @@ npm init -y
 npm install @capacitor/core @capacitor/cli @capacitor/android
 npx cap init "ZIFIR" "com.altaowxgm.zifir" --web-dir=www
 mkdir www
-copy "<proje-klasoru>index.html" www\index.html
+copy "<proje-klasoru>\index.html" www\index.html
 npx cap add android
 ```
 
