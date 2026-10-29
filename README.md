@@ -10,6 +10,11 @@ S.T.A.L.K.E.R. atmosferini, extraction türünün risk/ödül gerilimini ve hız
 hissini karanlık bir pixel-art dünyasında bir araya getirir. Oyun tek bir HTML5 dosyasıdır (Canvas 2D,
 saf JavaScript, harici bağımlılık yok). Unity 6 ile mobil öncelikli bir remake'i de bu repoda.
 
+| Ana menü | Oyun içi |
+|---|---|
+| ![Ana menü](docs/screenshots/menu.png) | ![Oynanış](docs/screenshots/gameplay.png) |
+
+
 ![Kestrel operatörü](assets/operator_cut.png)
 
 ---
